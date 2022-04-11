@@ -1,11 +1,18 @@
 import React from "react";
-import {BrowserRouter as Router, Routes, Route,Link} from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+} from 'react-router-dom';
 import Home from "./Home";
-import About from "./About";
-import Dashboard from "./Dashboard";
+import Topics from "./Topics";
+import Kuliner from "./Kuliner";
+import ReviewHotel from "./ReviewHotel";
+import Travelling from "./Travelling";
 
-export default function BasicExample() {
-  return(
+export default function NestingExample(){
+    return(
     <Router>
       <div>
         <ul>
@@ -13,18 +20,17 @@ export default function BasicExample() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/topics">Topics</Link>
           </li>
         </ul>
         <hr />
-
         <Routes>
-          <Route exact path="/" element={<Home />}/>
-          <Route path="/about" element={<About />}/>
-          <Route path="/dashboard" element={<Dashboard />}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/topics" element={<Topics/>}>
+            <Route path="kuliner" element={<Kuliner/>}/>
+            <Route path="review-hotel" element={<ReviewHotel/>}/>
+            <Route path="travelling" element={<Travelling/>}/>
+          </Route>
         </Routes>
       </div>
     </Router>
